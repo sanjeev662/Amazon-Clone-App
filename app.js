@@ -23,6 +23,28 @@ app.use(router);
 
 const port = process.env.PORT || 8005;
 
+//////////////////////////////////Deployment///////////////////////////////////////////
+
+
+//for deploying our react app ...it allow when we in production environment,
+//then run an express middleware that gives the server access to our react app.
+//by which our react app deployed as html file.
+//ak tarah se backend ko frontend se jodne ke liye in production environment..use ho rha hai
+
+if (process.env.NODE_ENV === "production") {
+    app.use(express.static("frontend/build"))
+}
+else {
+    app.get("/", (req, res) => {
+      res.send("API is running..");
+    });
+  }
+
+
+////////////////////////////Deployment over////////////////////////////////////////////////
+
+
+
 app.listen(port,()=>{
     console.log(`server is running on port number ${port}`);
 })
