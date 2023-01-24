@@ -12,7 +12,7 @@ const Option = ({ deletedata, get }) => {
   const removedata = async (id) => {
     try {
       const res = await fetch(`remove/${id}`, {
-        method: "GET",
+        method: "DELETE",
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
